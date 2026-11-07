@@ -1,6 +1,6 @@
 import { BLANK_CLASS, GAP_CLASS, extraBlankLinesBefore, listItemGaps, spaceBefore, keepBlankLines, stripFrontmatter } from "../src/blank";
 import { allDicts, detectLanguage, tr } from "../src/i18n";
-import { geometry, pageCss, pageNumberContent, pdfOptions, printOptions, safeFileName, GRAY_CLASS } from "../src/page";
+import { folderOf, inFolder, geometry, pageCss, pageNumberContent, pdfOptions, printOptions, safeFileName, GRAY_CLASS } from "../src/page";
 import { DEFAULT_SETTINGS, exportOptionsOf, sanitizeSettings } from "../src/settings";
 
 let failed = 0;
@@ -181,6 +181,19 @@ test("file names", () => {
   eq(safeFileName("note. "), "note");
   eq(safeFileName("   "), "note");
   eq(safeFileName("会議メモ"), "会議メモ");
+});
+
+test("save paths", () => {
+  eq(folderOf("C:\\Users\\me\\a.pdf"), "C:\\Users\\me");
+  eq(folderOf("C:\\a.pdf"), "C:\\");
+  eq(folderOf("/home/me/a.pdf"), "/home/me");
+  eq(folderOf("/a.pdf"), "/");
+  eq(folderOf("a.pdf"), "");
+  eq(inFolder("C:\\Users\\me", "a.pdf"), "C:\\Users\\me\\a.pdf");
+  eq(inFolder("C:\\", "a.pdf"), "C:\\a.pdf");
+  eq(inFolder("/home/me", "a.pdf"), "/home/me/a.pdf");
+  eq(inFolder("/", "a.pdf"), "/a.pdf");
+  eq(inFolder("", "a.pdf"), "a.pdf");
 });
 
 test("all languages have the same keys and placeholders", () => {

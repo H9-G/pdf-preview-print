@@ -164,3 +164,19 @@ export function safeFileName(name: string): string {
     .replace(/[. ]+$/, "");
   return s === "" ? "note" : s;
 }
+
+/** Folder part of a file path (Windows or POSIX), keeping a drive root such as "C:\\" or "/". */
+export function folderOf(file: string): string {
+  const i = Math.max(file.lastIndexOf("/"), file.lastIndexOf("\\"));
+  if (i < 0) return "";
+  const dir = file.slice(0, i);
+  if (dir === "") return file[0];
+  return /^[A-Za-z]:$/.test(dir) ? dir + file[i] : dir;
+}
+
+/** A file name in a folder, with the folder's own separator. */
+export function inFolder(folder: string, name: string): string {
+  if (!folder) return name;
+  const sep = folder.includes("\\") && !folder.includes("/") ? "\\" : "/";
+  return folder.endsWith("/") || folder.endsWith("\\") ? folder + name : folder + sep + name;
+}

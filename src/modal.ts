@@ -1,10 +1,9 @@
 import { Modal, Notice, Setting, TFile, loadPdfJs, normalizePath } from "obsidian";
 import * as electron from "electron";
-import { promises as fs } from "fs";
-import * as path from "path";
+import * as nodeFs from "fs";
 import type PdfPreviewPrintPlugin from "./main";
 import { PrintEngine } from "./engine";
-import { pageCss, pageNumberContent, pdfOptions, printOptions, safeFileName } from "./page";
+import { folderOf, inFolder, pageCss, pageNumberContent, pdfOptions, printOptions, safeFileName } from "./page";
 import { RenderedNote, baseFontPx, bodyClass, bodyStyle, collectCss, renderNote } from "./render";
 import { ColorMode, ExportOptions, MARGINS, MarginKey, PAGE_SIZES, PageSizeKey, SCALES, exportOptionsOf } from "./settings";
 import { MessageKey } from "./i18n";
@@ -33,6 +32,12 @@ interface ElectronRemote {
   };
   shell?: { openPath(path: string): Promise<string> };
 }
+/** The part of Node's file module that is used: writing the PDF to the file chosen in the save dialog. */
+interface FileWriter {
+  promises: { writeFile(path: string, data: Uint8Array): Promise<void> };
+}
+const writeFile = (file: string, data: Uint8Array): Promise<void> => (nodeFs as unknown as FileWriter).promises.writeFile(file, data);
+
 const electronRemote = (): ElectronRemote | undefined => (electron as unknown as { remote?: ElectronRemote }).remote;
 
 const errorText = (e: unknown) => (e instanceof Error ? e.message : String(e));
@@ -265,12 +270,12 @@ export class ExportModal extends Modal {
       } else {
         const result = await dialog.showSaveDialog({
           title: this.t("btnSave"),
-          defaultPath: s.lastFolder ? path.join(s.lastFolder, name) : name,
+          defaultPath: inFolder(s.lastFolder, name),
           filters: [{ name: "PDF", extensions: ["pdf"] }],
         });
         if (result.canceled || !result.filePath) return;
-        await fs.writeFile(result.filePath, pdf);
-        s.lastFolder = path.dirname(result.filePath);
+        await writeFile(result.filePath, pdf);
+        s.lastFolder = folderOf(result.filePath);
         await this.plugin.saveSettings();
         new Notice(this.t("savedTo", { path: result.filePath }));
         if (s.openAfterSave) await remote?.shell?.openPath(result.filePath);
