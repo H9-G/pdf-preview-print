@@ -1,5 +1,5 @@
 import { Modal, Notice, Setting, TFile, loadPdfJs, normalizePath } from "obsidian";
-import { remote } from "electron";
+import * as electron from "electron";
 import { promises as fs } from "fs";
 import * as path from "path";
 import type PdfPreviewPrintPlugin from "./main";
@@ -21,6 +21,19 @@ interface PdfJsDoc {
 interface PdfJs {
   getDocument(o: { data: Uint8Array }): { promise: Promise<PdfJsDoc> };
 }
+
+/** The part of Electron's remote module that is used: the save dialog and opening a file. */
+interface ElectronRemote {
+  dialog?: {
+    showSaveDialog(options: {
+      title?: string;
+      defaultPath?: string;
+      filters?: { name: string; extensions: string[] }[];
+    }): Promise<{ canceled: boolean; filePath?: string }>;
+  };
+  shell?: { openPath(path: string): Promise<string> };
+}
+const electronRemote = (): ElectronRemote | undefined => (electron as unknown as { remote?: ElectronRemote }).remote;
 
 const errorText = (e: unknown) => (e instanceof Error ? e.message : String(e));
 
@@ -233,7 +246,9 @@ export class ExportModal extends Modal {
     const name = `${safeFileName(this.file.basename)}.pdf`;
     try {
       // Without Electron's dialog (very old app versions) the PDF goes next to the note.
-      if (s.saveTo === "folder" || !remote?.dialog) {
+      const remote = electronRemote();
+      const dialog = remote?.dialog;
+      if (s.saveTo === "folder" || !dialog) {
         const folder = this.file.parent?.path ?? "/";
         const target = normalizePath(folder === "/" ? name : `${folder}/${name}`);
         const bytes = pdf.buffer.slice(pdf.byteOffset, pdf.byteOffset + pdf.byteLength) as ArrayBuffer;
@@ -248,7 +263,7 @@ export class ExportModal extends Modal {
         new Notice(this.t("savedTo", { path: saved.path }));
         if (s.openAfterSave) await this.app.workspace.getLeaf(true).openFile(saved);
       } else {
-        const result = await remote.dialog.showSaveDialog({
+        const result = await dialog.showSaveDialog({
           title: this.t("btnSave"),
           defaultPath: s.lastFolder ? path.join(s.lastFolder, name) : name,
           filters: [{ name: "PDF", extensions: ["pdf"] }],
@@ -258,7 +273,7 @@ export class ExportModal extends Modal {
         s.lastFolder = path.dirname(result.filePath);
         await this.plugin.saveSettings();
         new Notice(this.t("savedTo", { path: result.filePath }));
-        if (s.openAfterSave) await remote.shell?.openPath(result.filePath);
+        if (s.openAfterSave) await remote?.shell?.openPath(result.filePath);
       }
       this.close();
     } catch (e) {
