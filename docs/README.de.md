@@ -33,6 +33,7 @@ Sieh dir eine Notiz als PDF-Seiten an, bevor du sie speicherst, und drucke sie. 
 
 - Das Plugin liest die Notiz, die du exportierst. Es speichert die PDF nur dort, wo du es wählst, oder neben der Notiz, wenn das eingestellt ist; eine PDF mit gleichem Namen wird dort ersetzt.
 - Es nutzt Electron, die Grundlage der Obsidian-Desktop-App, um die PDF zu erstellen, zu drucken und den Speicherdialog zu zeigen.
+- Wenn du den Ort jedes Mal wählst, wird die PDF mit dem Dateimodul von Node.js (fs) geschrieben, nur in die Datei, die du im Speicherdialog gewählt hast. Keine andere Datei auf deinem Computer wird gelesen oder geschrieben. Um alles im Tresor zu behalten, wähle als Speicherort „Neben der Notiz“.
 - Keine Netzwerknutzung. Das Plugin funktioniert offline und sammelt keine Daten.
 
 ## Lizenz

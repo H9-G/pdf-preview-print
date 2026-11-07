@@ -33,6 +33,7 @@ Prévisualisez une note sous forme de pages PDF avant de l'enregistrer, et impri
 
 - Le plugin lit la note que vous exportez. Il enregistre le PDF uniquement à l'endroit choisi, ou à côté de la note si cette option est réglée ; un PDF du même nom y est remplacé.
 - Il utilise Electron, la base de l'application de bureau Obsidian, pour créer le PDF, imprimer et afficher la boîte d'enregistrement.
+- Si vous choisissez l'emplacement à chaque fois, le PDF est écrit avec le module de fichiers de Node.js (fs), uniquement dans le fichier choisi dans la boîte d'enregistrement. Aucun autre fichier de votre ordinateur n'est lu ni écrit. Pour tout garder dans le coffre, choisissez « À côté de la note » comme emplacement.
 - Aucune utilisation du réseau. Le plugin fonctionne hors ligne et ne collecte aucune donnée.
 
 ## Licence

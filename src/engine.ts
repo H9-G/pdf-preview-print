@@ -124,7 +124,7 @@ export class PrintEngine {
   constructor(parent: HTMLElement) {
     const wrap = parent.createDiv({ cls: "pdf-preview-print-engine" });
     // "webview" is Electron's own element; createEl only knows the standard tag names.
-    this.view = wrap.createEl("webview" as "div", { attr: { src: START_PAGE } }) as unknown as WebviewTag;
+    this.view = wrap.createEl("webview" as "div", { cls: "pdf-preview-print-webview", attr: { src: START_PAGE } }) as unknown as WebviewTag;
     this.ready = new Promise((resolve, reject) => {
       const timer = window.setTimeout(() => reject(new Error("The print page did not load.")), 20000);
       this.view.addEventListener(

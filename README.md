@@ -33,6 +33,7 @@ Preview a note as PDF pages before you save it, and print it. Choose the paper, 
 
 - The plugin reads the note you export. It saves the PDF only where you choose, or next to the note when that option is set; a PDF of the same name there is replaced.
 - It uses Electron, the base of the Obsidian desktop app, to make the PDF, to print and to show the save dialog.
+- When you choose the place each time, the PDF is written with Node.js's file module (fs), only to the file you picked in the save dialog. Nothing else on your computer is read or written. To keep everything inside the vault, set the save place to "Next to the note".
 - No network use. The plugin works offline and collects no data.
 
 ## License

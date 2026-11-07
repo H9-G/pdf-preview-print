@@ -33,6 +33,7 @@ Previsualiza una nota como páginas PDF antes de guardarla, e imprímela. Elige 
 
 - El plugin lee la nota que exportas. Guarda el PDF solo donde tú elijas, o junto a la nota si esa opción está activada; allí se reemplaza un PDF con el mismo nombre.
 - Usa Electron, la base de la aplicación de escritorio de Obsidian, para crear el PDF, imprimir y mostrar el diálogo de guardado.
+- Si eliges el lugar cada vez, el PDF se escribe con el módulo de archivos de Node.js (fs), solo en el archivo que elegiste en el diálogo de guardado. No se lee ni se escribe ningún otro archivo de tu ordenador. Para hacerlo todo dentro de la bóveda, elige «Junto a la nota» como lugar de guardado.
 - No usa la red. El plugin funciona sin conexión y no recopila datos.
 
 ## Licencia
