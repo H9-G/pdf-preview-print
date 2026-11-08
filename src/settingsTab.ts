@@ -4,6 +4,8 @@ import { LANGUAGES, MessageKey } from "./i18n";
 import { marginOptions } from "./modal";
 import { PAGE_SIZES, SCALES, sanitizeSettings } from "./settings";
 
+const SUPPORT_URL = "https://buymeacoffee.com/imh9";
+
 export class PdfSettingTab extends PluginSettingTab {
   constructor(
     app: App,
@@ -34,6 +36,13 @@ export class PdfSettingTab extends PluginSettingTab {
   getSettingDefinitions(): SettingDefinitionItem[] {
     const t = (k: MessageKey) => this.plugin.t(k);
     return [
+      {
+        name: t("supportName"),
+        desc: t("supportDesc"),
+        render: (setting) => {
+          setting.addButton((b) => b.setButtonText("☕ Buy me a coffee").setCta().onClick(() => window.open(SUPPORT_URL)));
+        },
+      },
       {
         type: "group",
         heading: t("headUsage"),

@@ -76,6 +76,8 @@ const en = {
   usageMenuDesc: "In the … menu of a note, or by right-clicking a note in the file list, choose “PDF preview and print”.",
   usageWindow: "Preview window",
   usageWindowDesc: "Change the options on the right and press “Save PDF” or “Print”. Changes there are for that time only; “Make these the default” saves them as the defaults below.",
+  supportName: "Support development",
+  supportDesc: "If this plugin is useful to you, you can buy me a coffee.",
 };
 
 export type MessageKey = keyof typeof en;
@@ -143,6 +145,8 @@ const ja: Dict = {
   usageMenuDesc: "ノートの「…」メニューか、ファイル一覧でノートを右クリックして「PDFのプレビュー・印刷」を選びます。",
   usageWindow: "プレビュー画面",
   usageWindowDesc: "右側で設定を変えて「PDFを保存」か「印刷」を押します。そこで変えた設定はその回だけです。「この設定を既定にする」を押すと、下のデフォルト設定に保存されます。",
+  supportName: "開発を応援する",
+  supportDesc: "このプラグインが役に立ったら、コーヒーをおごってもらえるとうれしいです。",
 };
 
 const zhCN: Dict = {
@@ -207,6 +211,8 @@ const zhCN: Dict = {
   usageMenuDesc: "在笔记的 … 菜单中，或在文件列表中右键点击笔记，选择“PDF 预览与打印”。",
   usageWindow: "预览窗口",
   usageWindowDesc: "在右侧更改选项，然后点击“保存 PDF”或“打印”。在那里的更改只对本次有效；“设为默认”会把它们保存为下面的默认设置。",
+  supportName: "支持开发",
+  supportDesc: "如果这个插件对你有帮助，欢迎请我喝杯咖啡。",
 };
 
 const zhTW: Dict = {
@@ -271,6 +277,8 @@ const zhTW: Dict = {
   usageMenuDesc: "在筆記的 … 選單中，或在檔案清單中右鍵點選筆記，選擇「PDF 預覽與列印」。",
   usageWindow: "預覽視窗",
   usageWindowDesc: "在右側變更選項，然後按「儲存 PDF」或「列印」。在那裡的變更只對這次有效；「設為預設」會把它們儲存為下方的預設設定。",
+  supportName: "支持開發",
+  supportDesc: "如果這個外掛對你有幫助，歡迎請我喝杯咖啡。",
 };
 
 const ko: Dict = {
@@ -335,6 +343,8 @@ const ko: Dict = {
   usageMenuDesc: "노트의 … 메뉴나 파일 목록에서 노트를 오른쪽 클릭해 “PDF 미리 보기 및 인쇄”를 고릅니다.",
   usageWindow: "미리 보기 창",
   usageWindowDesc: "오른쪽에서 옵션을 바꾸고 “PDF 저장” 또는 “인쇄”를 누릅니다. 거기서 바꾼 옵션은 그때만 적용되며, “기본값으로 저장”을 누르면 아래 기본 설정에 저장됩니다.",
+  supportName: "개발 응원하기",
+  supportDesc: "이 플러그인이 도움이 되었다면 커피 한 잔 사 주세요.",
 };
 
 const es: Dict = {
@@ -399,6 +409,8 @@ const es: Dict = {
   usageMenuDesc: "En el menú … de una nota, o con clic derecho en una nota de la lista de archivos, elige «Vista previa e impresión en PDF».",
   usageWindow: "Ventana de vista previa",
   usageWindowDesc: "Cambia las opciones de la derecha y pulsa «Guardar PDF» o «Imprimir». Los cambios allí son solo para esa vez; «Usar como predeterminado» los guarda como los valores de abajo.",
+  supportName: "Apoya el desarrollo",
+  supportDesc: "Si este plugin te resulta útil, puedes invitarme a un café.",
 };
 
 const fr: Dict = {
@@ -463,6 +475,8 @@ const fr: Dict = {
   usageMenuDesc: "Dans le menu … d'une note, ou par un clic droit sur une note dans la liste des fichiers, choisissez « Aperçu PDF et impression ».",
   usageWindow: "Fenêtre d'aperçu",
   usageWindowDesc: "Changez les options à droite et appuyez sur « Enregistrer le PDF » ou « Imprimer ». Ces changements ne valent que pour cette fois ; « Utiliser par défaut » les enregistre comme réglages ci-dessous.",
+  supportName: "Soutenir le développement",
+  supportDesc: "Si ce plugin vous est utile, vous pouvez m'offrir un café.",
 };
 
 const de: Dict = {
@@ -527,6 +541,8 @@ const de: Dict = {
   usageMenuDesc: "Wähle im …-Menü einer Notiz oder per Rechtsklick auf eine Notiz in der Dateiliste „PDF-Vorschau und Drucken“.",
   usageWindow: "Vorschaufenster",
   usageWindowDesc: "Ändere rechts die Optionen und drücke „PDF speichern“ oder „Drucken“. Änderungen dort gelten nur für dieses Mal; „Als Standard verwenden“ speichert sie als die Standardeinstellungen unten.",
+  supportName: "Entwicklung unterstützen",
+  supportDesc: "Wenn dir dieses Plugin hilft, kannst du mir einen Kaffee spendieren.",
 };
 
 const DICTS: Record<LangCode, Dict> = { en, ja, "zh-CN": zhCN, "zh-TW": zhTW, ko, es, fr, de };
