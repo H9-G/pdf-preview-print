@@ -31,6 +31,7 @@ export class PdfSettingTab extends PluginSettingTab {
     await this.plugin.saveSettings();
     if (key === "language") this.update(); // redraw in the new language
     if (key === "readingBlankLines") this.plugin.refreshReading();
+    if (key === "readingIndent") this.plugin.rerenderReading();
   }
 
   getSettingDefinitions(): SettingDefinitionItem[] {
@@ -78,6 +79,7 @@ export class PdfSettingTab extends PluginSettingTab {
           { name: t("optTitle"), desc: t("setTitleDesc"), control: { type: "toggle", key: "showTitle" } },
           { name: t("optPageNumbers"), desc: t("setPageNumbersDesc"), control: { type: "toggle", key: "pageNumbers" } },
           { name: t("optLineNumbers"), desc: t("setLineNumbersDesc"), control: { type: "toggle", key: "lineNumbers" } },
+          { name: t("optIndent"), desc: t("setIndentDesc"), control: { type: "toggle", key: "keepIndent" } },
           { name: t("optBlank"), desc: t("setBlankDesc"), control: { type: "toggle", key: "keepBlankLines" } },
           { name: t("optBlankLists"), desc: t("setBlankListsDesc"), control: { type: "toggle", key: "blankInLists" } },
           { name: t("optBlankMath"), desc: t("setBlankMathDesc"), control: { type: "toggle", key: "blankInMath" } },
@@ -86,7 +88,10 @@ export class PdfSettingTab extends PluginSettingTab {
       {
         type: "group",
         heading: t("headReading"),
-        items: [{ name: t("setReadingBlank"), desc: t("setReadingBlankDesc"), control: { type: "toggle", key: "readingBlankLines" } }],
+        items: [
+          { name: t("setReadingIndent"), desc: t("setReadingIndentDesc"), control: { type: "toggle", key: "readingIndent" } },
+          { name: t("setReadingBlank"), desc: t("setReadingBlankDesc"), control: { type: "toggle", key: "readingBlankLines" } },
+        ],
       },
       {
         type: "group",

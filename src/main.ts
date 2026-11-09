@@ -21,7 +21,7 @@ export default class PdfPreviewPrintPlugin extends Plugin {
       await this.saveSettings();
     }
 
-    this.reading = new ReadingBlankLines(() => this.settings.readingBlankLines);
+    this.reading = new ReadingBlankLines(this.app, () => this.settings.readingBlankLines, () => this.settings.readingIndent);
     this.registerMarkdownPostProcessor((el, ctx) => this.reading.process(el, ctx));
     const refresh = debounce(() => this.reading.refresh(), 300, true);
     this.registerEvent(this.app.workspace.on("editor-change", refresh));
@@ -69,6 +69,13 @@ export default class PdfPreviewPrintPlugin extends Plugin {
 
   refreshReading(): void {
     this.reading.refresh();
+  }
+
+  /** Render every open reading view again (indentation changes the blocks themselves). */
+  rerenderReading(): void {
+    for (const leaf of this.app.workspace.getLeavesOfType("markdown")) {
+      if (leaf.view instanceof MarkdownView) leaf.view.previewMode.rerender(true);
+    }
   }
 
   async saveSettings(): Promise<void> {

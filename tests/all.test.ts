@@ -1,4 +1,5 @@
 import { BLANK_CLASS, GAP_CLASS, extraBlankLinesBefore, listItemGaps, spaceBefore, keepBlankLines, stripFrontmatter } from "../src/blank";
+import { indentWidth, keepIndent } from "../src/indent";
 import { allDicts, detectLanguage, tr } from "../src/i18n";
 import { folderOf, inFolder, geometry, pageCss, pageNumberContent, pdfOptions, printOptions, safeFileName, GRAY_CLASS } from "../src/page";
 import { DEFAULT_SETTINGS, exportOptionsOf, sanitizeSettings } from "../src/settings";
@@ -181,6 +182,36 @@ test("file names", () => {
   eq(safeFileName("note. "), "note");
   eq(safeFileName("   "), "note");
   eq(safeFileName("会議メモ"), "会議メモ");
+});
+
+test("indent: spaces and tabs at the start of lines are kept", () => {
+  const nb = (n: number) => "&nbsp;".repeat(n);
+  eq(keepIndent("  two\n\tone tab\n    four"), `${nb(2)}two\n${nb(4)}one tab\n${nb(4)}four`);
+  eq(keepIndent("text\n  more"), `text\n${nb(2)}more`);
+  eq(keepIndent("no indent"), "no indent");
+  eq(indentWidth("  \t"), 4);
+  eq(indentWidth("\t\t"), 8);
+  eq(indentWidth(" \t", 2), 2);
+});
+
+test("indent: lists, code, math, comments and block marks are left alone", () => {
+  for (const md of [
+    "- a\n  - b\n    more",
+    "1. a\n\n    more",
+    "```\n  code\n```",
+    "- a\n  ```\n  x\n  ```",
+    "$$\n  x\n$$",
+    "%%\n  hidden\n%%",
+    "  # heading",
+    "  > quote",
+    "  | a | b |",
+    "  <div>",
+  ])
+    eq(keepIndent(md), md);
+});
+
+test("indent: a list ends at a line that is not indented", () => {
+  eq(keepIndent("- a\ntext\n  indented"), "- a\ntext\n&nbsp;&nbsp;indented");
 });
 
 test("save paths", () => {

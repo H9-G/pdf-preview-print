@@ -1,4 +1,5 @@
 import { App, Component, MarkdownRenderer, MarkdownView, TFile } from "obsidian";
+import { keepIndent } from "./indent";
 import { GAP_BEFORE_CLASS, GAP_CLASS, LINES_VAR, keepBlankLines, stripFrontmatter } from "./blank";
 import { PAGE_CLASS, GRAY_CLASS } from "./page";
 import { READING_CLASS } from "./reading";
@@ -39,6 +40,7 @@ function settle(el: HTMLElement, quietMs = 300, maxMs = 3000): Promise<void> {
 
 export interface RenderOptions {
   keepBlankLines: boolean;
+  keepIndent: boolean;
   blankInLists: boolean;
   blankInMath: boolean;
   showTitle: boolean;
@@ -46,6 +48,8 @@ export interface RenderOptions {
 
 export async function renderNote(app: App, file: TFile, opts: RenderOptions): Promise<RenderedNote> {
   let md = stripFrontmatter(await noteText(app, file));
+  // Indentation first: the empty-line rules then see indented paragraphs as ordinary ones.
+  if (opts.keepIndent) md = keepIndent(md);
   if (opts.keepBlankLines) md = keepBlankLines(md, { lists: opts.blankInLists, math: opts.blankInMath });
 
   const fm = app.metadataCache.getFileCache(file)?.frontmatter;

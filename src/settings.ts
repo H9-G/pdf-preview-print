@@ -22,6 +22,8 @@ export const SCALES = [70, 80, 90, 100, 110, 120, 130, 150];
 /** What a single export looks like. These can be changed in the export window too. */
 export interface ExportOptions {
   keepBlankLines: boolean;
+  /** Keep the spaces and tabs at the start of lines (outside lists). */
+  keepIndent: boolean;
   /** Empty lines between and inside list items (also used in reading view). */
   blankInLists: boolean;
   /** Empty lines inside math blocks: the block is split into separate formulas there. */
@@ -43,6 +45,8 @@ export interface PdfSettings extends ExportOptions {
   language: LangCode | "";
   /** Show every empty line in reading view as well. */
   readingBlankLines: boolean;
+  /** Keep indentation in reading view as well. */
+  readingIndent: boolean;
   saveTo: SaveTo;
   openAfterSave: boolean;
   /** Folder last chosen in the save dialog. */
@@ -52,9 +56,11 @@ export interface PdfSettings extends ExportOptions {
 export const DEFAULT_SETTINGS: PdfSettings = {
   language: "",
   keepBlankLines: true,
+  keepIndent: true,
   blankInLists: true,
   blankInMath: true,
   readingBlankLines: true,
+  readingIndent: true,
   colorMode: "color",
   pageSize: "A4",
   landscape: false,
@@ -78,9 +84,11 @@ export function sanitizeSettings(raw: unknown): PdfSettings {
   return {
     language: isLangCode(r.language) ? r.language : "",
     keepBlankLines: bool("keepBlankLines"),
+    keepIndent: bool("keepIndent"),
     blankInLists: bool("blankInLists"),
     blankInMath: bool("blankInMath"),
     readingBlankLines: bool("readingBlankLines"),
+    readingIndent: bool("readingIndent"),
     colorMode: r.colorMode === "gray" || r.colorMode === "color" ? r.colorMode : d.colorMode,
     pageSize: has(PAGE_SIZES, r.pageSize) ? (r.pageSize as PageSizeKey) : d.pageSize,
     landscape: bool("landscape"),
@@ -96,6 +104,6 @@ export function sanitizeSettings(raw: unknown): PdfSettings {
 }
 
 export function exportOptionsOf(s: PdfSettings): ExportOptions {
-  const { keepBlankLines, blankInLists, blankInMath, colorMode, pageSize, landscape, margin, scale, showTitle, pageNumbers, lineNumbers } = s;
-  return { keepBlankLines, blankInLists, blankInMath, colorMode, pageSize, landscape, margin, scale, showTitle, pageNumbers, lineNumbers };
+  const { keepBlankLines, keepIndent, blankInLists, blankInMath, colorMode, pageSize, landscape, margin, scale, showTitle, pageNumbers, lineNumbers } = s;
+  return { keepBlankLines, keepIndent, blankInLists, blankInMath, colorMode, pageSize, landscape, margin, scale, showTitle, pageNumbers, lineNumbers };
 }

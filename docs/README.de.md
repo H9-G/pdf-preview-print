@@ -13,6 +13,7 @@ Sieh dir eine Notiz als PDF-Seiten an, bevor du sie speicherst, und drucke sie. 
 - **Farbe oder Schwarzweiß**: Schwarzweiß macht Farben, Hervorhebungen und Bilder grau. Beim Drucken wird auch der Drucker auf Graustufen gestellt.
 - **Leerzeilen behalten**: Markdown zeigt mehrere Leerzeilen meist als einen Abstand. Mit dieser Option wird jede Leerzeile zu Abstand auf der Seite, wie im Editor. Sie lässt sich im Exportfenster und in den Einstellungen ein- und ausschalten (standardmäßig an). Listen und Mathe-Blöcke können einbezogen werden oder nicht (standardmäßig beide); ein Mathe-Block wird an seinen Leerzeilen in getrennte Formeln geteilt. Codeblöcke behalten ihre Leerzeilen immer.
 - **Leerzeilen in der Leseansicht**: Auch die Leseansicht zeigt jede Leerzeile als Abstand, auch zwischen Listeneinträgen (in den Einstellungen abschaltbar).
+- **Einrückung behalten**: Mit Leerzeichen oder Tabs eingerückte Zeilen bleiben im PDF und in der Leseansicht eingerückt, wie im Editor, statt zu Code zu werden. Listen werden nicht verändert. Beides lässt sich in den Einstellungen abschalten.
 - Einstellungen, Befehle und Meldungen gibt es auf Englisch, Japanisch, vereinfachtem Chinesisch, traditionellem Chinesisch, Koreanisch, Spanisch, Französisch und Deutsch. Die Sprache folgt beim ersten Start Obsidian und kann in den Einstellungen geändert werden.
 
 ## Verwendung

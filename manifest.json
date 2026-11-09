@@ -1,7 +1,7 @@
 {
   "id": "pdf-preview-print",
   "name": "PDF Preview Print",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "minAppVersion": "1.13.0",
   "description": "See a note as PDF pages before saving it, and print it. Choose paper, margins, colour or black and white, and keep every empty line.",
   "author": "H9-",

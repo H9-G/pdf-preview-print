@@ -13,6 +13,7 @@ Prévisualisez une note sous forme de pages PDF avant de l'enregistrer, et impri
 - **Couleur ou noir et blanc** : en noir et blanc, les couleurs, surlignages et images deviennent gris. À l'impression, l'imprimante est aussi réglée en gris.
 - **Garder les lignes vides** : Markdown affiche généralement plusieurs lignes vides comme un seul espace. Avec cette option, chaque ligne vide devient un espace sur la page, comme dans l'éditeur. Elle peut être activée ou désactivée dans la fenêtre d'export et dans les réglages (activée par défaut). Les listes et les blocs mathématiques peuvent être inclus ou non (inclus par défaut) ; un bloc mathématique est coupé en formules séparées à ses lignes vides. Les blocs de code gardent toujours leurs lignes vides.
 - **Lignes vides en mode lecture** : le mode lecture affiche aussi chaque ligne vide comme un espace, y compris entre les éléments de liste (désactivable dans les réglages).
+- **Garder l'indentation** : les lignes indentées avec des espaces ou des tabulations restent indentées dans le PDF et en mode lecture, comme dans l'éditeur, au lieu de devenir du code. Les listes ne changent pas. Les deux options se désactivent dans les réglages.
 - Les réglages, commandes et messages sont disponibles en anglais, japonais, chinois simplifié, chinois traditionnel, coréen, espagnol, français et allemand. La langue suit celle d'Obsidian au premier lancement et peut être changée dans les réglages.
 
 ## Utilisation

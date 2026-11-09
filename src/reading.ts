@@ -1,4 +1,5 @@
-import { MarkdownPostProcessorContext, MarkdownRenderChild } from "obsidian";
+import { App, MarkdownPostProcessorContext, MarkdownRenderChild, MarkdownRenderer } from "obsidian";
+import { keepIndent } from "./indent";
 import { GAP_BEFORE_CLASS, LINES_VAR, listItemGaps, spaceBefore } from "./blank";
 
 export const READING_CLASS = "pdf-preview-print-blank-before";
@@ -15,16 +16,48 @@ function mark(el: HTMLElement, cls: string, n: number): void {
  */
 export class ReadingBlankLines {
   private blocks = new Map<HTMLElement, MarkdownPostProcessorContext>();
+  /** While a block is rendered again for indentation, its own blocks are not indented a second time. */
+  private rendering = 0;
 
-  constructor(private enabled: () => boolean) {}
+  constructor(
+    private app: App,
+    private enabled: () => boolean,
+    private indentEnabled: () => boolean,
+  ) {}
 
-  process(el: HTMLElement, ctx: MarkdownPostProcessorContext): void {
-    if (!ctx.getSectionInfo(el)) return; // not a block of a note in reading view
+  async process(el: HTMLElement, ctx: MarkdownPostProcessorContext): Promise<void> {
+    const info = ctx.getSectionInfo(el);
+    if (!info) return; // not a block of a note in reading view
     this.blocks.set(el, ctx);
     const child = new MarkdownRenderChild(el);
     child.register(() => this.blocks.delete(el));
     ctx.addChild(child);
     this.apply(el, ctx);
+    if (this.indentEnabled() && this.rendering === 0) await this.indent(el, ctx, info, child);
+  }
+
+  /**
+   * Indentation: a paragraph (or a block that Markdown turned into code because it was indented) is
+   * rendered again from its text with the leading spaces kept. Lists and fenced code are not touched.
+   */
+  private async indent(
+    el: HTMLElement,
+    ctx: MarkdownPostProcessorContext,
+    info: { text: string; lineStart: number; lineEnd: number },
+    child: MarkdownRenderChild,
+  ): Promise<void> {
+    const first = el.firstElementChild;
+    if (!first || (first.tagName !== "P" && first.tagName !== "PRE") || el.querySelector("ul, ol")) return;
+    const src = info.text.split(/\r?\n/).slice(info.lineStart, info.lineEnd + 1).join("\n");
+    const out = keepIndent(src);
+    if (out === src) return;
+    el.empty();
+    this.rendering++;
+    try {
+      await MarkdownRenderer.render(this.app, out, el, ctx.sourcePath, child);
+    } finally {
+      this.rendering--;
+    }
   }
 
   private apply(el: HTMLElement, ctx: MarkdownPostProcessorContext): void {

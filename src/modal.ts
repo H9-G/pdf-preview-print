@@ -139,6 +139,10 @@ export class ExportModal extends Modal {
       .setName(t("optLineNumbers"))
       .addToggle((c) => c.setValue(this.opts.lineNumbers).onChange((v) => change(() => (this.opts.lineNumbers = v))));
     new Setting(el)
+      .setName(t("optIndent"))
+      .setDesc(t("optIndentDesc"))
+      .addToggle((c) => c.setValue(this.opts.keepIndent).onChange((v) => change(() => (this.opts.keepIndent = v))));
+    new Setting(el)
       .setName(t("optBlank"))
       .setDesc(t("optBlankDesc"))
       .addToggle((c) => c.setValue(this.opts.keepBlankLines).onChange((v) => change(() => (this.opts.keepBlankLines = v))));
@@ -181,7 +185,7 @@ export class ExportModal extends Modal {
     if (!engine) return;
     try {
       const o = { ...this.opts };
-      const key = [o.keepBlankLines, o.blankInLists, o.blankInMath, o.showTitle].join("|");
+      const key = [o.keepIndent, o.keepBlankLines, o.blankInLists, o.blankInMath, o.showTitle].join("|");
       if (this.note?.key !== key) {
         this.note = { key, value: await renderNote(this.app, this.file, o) };
       }

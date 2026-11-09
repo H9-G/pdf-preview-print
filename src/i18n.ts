@@ -78,6 +78,11 @@ const en = {
   usageWindowDesc: "Change the options on the right and press “Save PDF” or “Print”. Changes there are for that time only; “Make these the default” saves them as the defaults below.",
   supportName: "Support development",
   supportDesc: "If this plugin is useful to you, you can buy me a coffee.",
+  optIndent: "Keep indentation",
+  optIndentDesc: "Lines indented with spaces or tabs stay indented, as in the editor. Lists are not changed.",
+  setIndentDesc: "Lines indented with spaces or tabs stay indented on the page, as in the editor. Lists are not changed.",
+  setReadingIndent: "Keep indentation in reading view",
+  setReadingIndentDesc: "Lines indented with spaces or tabs are shown indented in reading view too, as in the editor, instead of as code. Lists are not changed.",
 };
 
 export type MessageKey = keyof typeof en;
@@ -147,6 +152,11 @@ const ja: Dict = {
   usageWindowDesc: "右側で設定を変えて「PDFを保存」か「印刷」を押します。そこで変えた設定はその回だけです。「この設定を既定にする」を押すと、下のデフォルト設定に保存されます。",
   supportName: "開発を応援する",
   supportDesc: "このプラグインが役に立ったら、コーヒーをおごってもらえるとうれしいです。",
+  optIndent: "インデントを反映",
+  optIndentDesc: "スペースやタブで字下げした行を、エディタと同じように字下げします。リストは変えません。",
+  setIndentDesc: "スペースやタブで字下げした行を、エディタと同じようにページでも字下げします。リストは変えません。",
+  setReadingIndent: "リーディングビューでもインデントを反映",
+  setReadingIndentDesc: "スペースやタブで字下げした行を、リーディングビューでもコードにせず、エディタと同じように字下げして表示します。リストは変えません。",
 };
 
 const zhCN: Dict = {
@@ -213,6 +223,11 @@ const zhCN: Dict = {
   usageWindowDesc: "在右侧更改选项，然后点击“保存 PDF”或“打印”。在那里的更改只对本次有效；“设为默认”会把它们保存为下面的默认设置。",
   supportName: "支持开发",
   supportDesc: "如果这个插件对你有帮助，欢迎请我喝杯咖啡。",
+  optIndent: "保留缩进",
+  optIndentDesc: "用空格或制表符缩进的行，像编辑器中一样保持缩进。列表不受影响。",
+  setIndentDesc: "用空格或制表符缩进的行，在页面上也像编辑器中一样保持缩进。列表不受影响。",
+  setReadingIndent: "在阅读视图中保留缩进",
+  setReadingIndentDesc: "用空格或制表符缩进的行，在阅读视图中也像编辑器一样缩进显示，而不是显示为代码。列表不受影响。",
 };
 
 const zhTW: Dict = {
@@ -279,6 +294,11 @@ const zhTW: Dict = {
   usageWindowDesc: "在右側變更選項，然後按「儲存 PDF」或「列印」。在那裡的變更只對這次有效；「設為預設」會把它們儲存為下方的預設設定。",
   supportName: "支持開發",
   supportDesc: "如果這個外掛對你有幫助，歡迎請我喝杯咖啡。",
+  optIndent: "保留縮排",
+  optIndentDesc: "以空格或定位字元縮排的行，像編輯器中一樣保持縮排。清單不受影響。",
+  setIndentDesc: "以空格或定位字元縮排的行，在頁面上也像編輯器中一樣保持縮排。清單不受影響。",
+  setReadingIndent: "在閱讀檢視中保留縮排",
+  setReadingIndentDesc: "以空格或定位字元縮排的行，在閱讀檢視中也像編輯器一樣縮排顯示，而不是顯示為程式碼。清單不受影響。",
 };
 
 const ko: Dict = {
@@ -345,6 +365,11 @@ const ko: Dict = {
   usageWindowDesc: "오른쪽에서 옵션을 바꾸고 “PDF 저장” 또는 “인쇄”를 누릅니다. 거기서 바꾼 옵션은 그때만 적용되며, “기본값으로 저장”을 누르면 아래 기본 설정에 저장됩니다.",
   supportName: "개발 응원하기",
   supportDesc: "이 플러그인이 도움이 되었다면 커피 한 잔 사 주세요.",
+  optIndent: "들여쓰기 유지",
+  optIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 편집기처럼 들여 씁니다. 목록은 바꾸지 않습니다.",
+  setIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 페이지에서도 편집기처럼 들여 씁니다. 목록은 바꾸지 않습니다.",
+  setReadingIndent: "읽기 보기에서도 들여쓰기 유지",
+  setReadingIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 읽기 보기에서도 코드가 아니라 편집기처럼 들여 써서 표시합니다. 목록은 바꾸지 않습니다.",
 };
 
 const es: Dict = {
@@ -411,6 +436,11 @@ const es: Dict = {
   usageWindowDesc: "Cambia las opciones de la derecha y pulsa «Guardar PDF» o «Imprimir». Los cambios allí son solo para esa vez; «Usar como predeterminado» los guarda como los valores de abajo.",
   supportName: "Apoya el desarrollo",
   supportDesc: "Si este plugin te resulta útil, puedes invitarme a un café.",
+  optIndent: "Conservar la sangría",
+  optIndentDesc: "Las líneas sangradas con espacios o tabulaciones conservan su sangría, como en el editor. Las listas no cambian.",
+  setIndentDesc: "Las líneas sangradas con espacios o tabulaciones conservan su sangría en la página, como en el editor. Las listas no cambian.",
+  setReadingIndent: "Conservar la sangría en la vista de lectura",
+  setReadingIndentDesc: "Las líneas sangradas con espacios o tabulaciones también se muestran sangradas en la vista de lectura, como en el editor, en lugar de como código. Las listas no cambian.",
 };
 
 const fr: Dict = {
@@ -477,6 +507,11 @@ const fr: Dict = {
   usageWindowDesc: "Changez les options à droite et appuyez sur « Enregistrer le PDF » ou « Imprimer ». Ces changements ne valent que pour cette fois ; « Utiliser par défaut » les enregistre comme réglages ci-dessous.",
   supportName: "Soutenir le développement",
   supportDesc: "Si ce plugin vous est utile, vous pouvez m'offrir un café.",
+  optIndent: "Garder l'indentation",
+  optIndentDesc: "Les lignes indentées avec des espaces ou des tabulations restent indentées, comme dans l'éditeur. Les listes ne changent pas.",
+  setIndentDesc: "Les lignes indentées avec des espaces ou des tabulations restent indentées sur la page, comme dans l'éditeur. Les listes ne changent pas.",
+  setReadingIndent: "Garder l'indentation en mode lecture",
+  setReadingIndentDesc: "Les lignes indentées avec des espaces ou des tabulations sont aussi affichées indentées en mode lecture, comme dans l'éditeur, et non comme du code. Les listes ne changent pas.",
 };
 
 const de: Dict = {
@@ -543,6 +578,11 @@ const de: Dict = {
   usageWindowDesc: "Ändere rechts die Optionen und drücke „PDF speichern“ oder „Drucken“. Änderungen dort gelten nur für dieses Mal; „Als Standard verwenden“ speichert sie als die Standardeinstellungen unten.",
   supportName: "Entwicklung unterstützen",
   supportDesc: "Wenn dir dieses Plugin hilft, kannst du mir einen Kaffee spendieren.",
+  optIndent: "Einrückung behalten",
+  optIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen bleiben eingerückt, wie im Editor. Listen werden nicht verändert.",
+  setIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen bleiben auch auf der Seite eingerückt, wie im Editor. Listen werden nicht verändert.",
+  setReadingIndent: "Einrückung in der Leseansicht behalten",
+  setReadingIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen werden auch in der Leseansicht eingerückt gezeigt, wie im Editor, statt als Code. Listen werden nicht verändert.",
 };
 
 const DICTS: Record<LangCode, Dict> = { en, ja, "zh-CN": zhCN, "zh-TW": zhTW, ko, es, fr, de };
