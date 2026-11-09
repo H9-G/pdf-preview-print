@@ -12,8 +12,8 @@ Prévisualisez une note sous forme de pages PDF avant de l'enregistrer, et impri
 - **Options** : format du papier (A3, A4, A5, B4, B5, Letter, Legal), portrait ou paysage, marges, taille du texte, nom de la note comme titre, numéros de page, numéros de ligne (désactivés par défaut).
 - **Couleur ou noir et blanc** : en noir et blanc, les couleurs, surlignages et images deviennent gris. À l'impression, l'imprimante est aussi réglée en gris.
 - **Garder les lignes vides** : Markdown affiche généralement plusieurs lignes vides comme un seul espace. Avec cette option, chaque ligne vide devient un espace sur la page, comme dans l'éditeur. Elle peut être activée ou désactivée dans la fenêtre d'export et dans les réglages (activée par défaut). Les listes et les blocs mathématiques peuvent être inclus ou non (inclus par défaut) ; un bloc mathématique est coupé en formules séparées à ses lignes vides. Les blocs de code gardent toujours leurs lignes vides.
-- **Lignes vides en mode lecture** : le mode lecture affiche aussi chaque ligne vide comme un espace, y compris entre les éléments de liste (désactivable dans les réglages).
-- **Garder l'indentation** : les lignes indentées avec des espaces ou des tabulations restent indentées dans le PDF et en mode lecture, comme dans l'éditeur, au lieu de devenir du code. Les listes ne changent pas. Les deux options se désactivent dans les réglages.
+- **Mode lecture** : les options qui affichent les lignes vides et l'indentation en mode lecture sont maintenant un plugin à part, [Editor-like Reading View](https://github.com/H9-G/editor-like-reading-view), qui fonctionne aussi sur mobile.
+- **Garder l'indentation** : les lignes indentées avec des espaces ou des tabulations restent indentées dans le PDF, comme dans l'éditeur, au lieu de devenir du code. Les listes ne changent pas. Désactivable dans les réglages et la fenêtre d'export.
 - Les réglages, commandes et messages sont disponibles en anglais, japonais, chinois simplifié, chinois traditionnel, coréen, espagnol, français et allemand. La langue suit celle d'Obsidian au premier lancement et peut être changée dans les réglages.
 
 ## Utilisation

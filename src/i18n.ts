@@ -52,8 +52,6 @@ const en = {
   headReading: "Reading view",
   headSave: "Saving",
   setBlankDesc: "Every empty line in the note becomes space on the page, as in the editor. Code blocks always keep their empty lines.",
-  setReadingBlank: "Keep empty lines in reading view",
-  setReadingBlankDesc: "Every empty line in the note is shown as space in reading view too, also between list items, as in the editor.",
   setColorDesc: "Black and white turns colours, highlights and pictures into grey.",
   setTitleDesc: "Show the note name at the top of the first page.",
   setPageNumbersDesc: "Show the page number at the bottom of every page.",
@@ -81,8 +79,8 @@ const en = {
   optIndent: "Keep indentation",
   optIndentDesc: "Lines indented with spaces or tabs stay indented, as in the editor. Lists are not changed.",
   setIndentDesc: "Lines indented with spaces or tabs stay indented on the page, as in the editor. Lists are not changed.",
-  setReadingIndent: "Keep indentation in reading view",
-  setReadingIndentDesc: "Lines indented with spaces or tabs are shown indented in reading view too, as in the editor, instead of as code. Lists are not changed.",
+  readingMoved: "Moved to Editor-like Reading View",
+  readingMovedDesc: "The reading view options (empty lines and indentation) are now a plugin of their own, Editor-like Reading View, which also works on mobile. Install it from Community plugins to keep using them.",
 };
 
 export type MessageKey = keyof typeof en;
@@ -126,8 +124,6 @@ const ja: Dict = {
   headReading: "リーディングビュー",
   headSave: "保存",
   setBlankDesc: "ノートの空白行を、エディタと同じようにページの空白にします。コードブロックの空白行はいつもそのまま出ます。",
-  setReadingBlank: "リーディングビューでも空白行を反映",
-  setReadingBlankDesc: "リーディングビューでも、リストの間を含め、ノートの空白行をエディタと同じように空白で表示します。",
   setColorDesc: "白黒にすると、色・ハイライト・画像がグレーになります。",
   setTitleDesc: "1ページ目の上にノート名を表示します。",
   setPageNumbersDesc: "各ページの下にページ番号を表示します。",
@@ -155,8 +151,8 @@ const ja: Dict = {
   optIndent: "インデントを反映",
   optIndentDesc: "スペースやタブで字下げした行を、エディタと同じように字下げします。リストは変えません。",
   setIndentDesc: "スペースやタブで字下げした行を、エディタと同じようにページでも字下げします。リストは変えません。",
-  setReadingIndent: "リーディングビューでもインデントを反映",
-  setReadingIndentDesc: "スペースやタブで字下げした行を、リーディングビューでもコードにせず、エディタと同じように字下げして表示します。リストは変えません。",
+  readingMoved: "Editor-like Reading Viewに移りました",
+  readingMovedDesc: "リーディングビューの設定（空白行とインデント）は、スマホでも使える別のプラグイン「Editor-like Reading View」に移りました。続けて使う場合は、コミュニティプラグインから入れてください。",
 };
 
 const zhCN: Dict = {
@@ -197,8 +193,6 @@ const zhCN: Dict = {
   headReading: "阅读视图",
   headSave: "保存",
   setBlankDesc: "笔记中的每个空行都在页面上留出空白，与编辑器中一致。代码块中的空行始终保留。",
-  setReadingBlank: "在阅读视图中保留空行",
-  setReadingBlankDesc: "在阅读视图中也像编辑器一样，把笔记中的每个空行（包括列表项之间的）显示为空白。",
   setColorDesc: "黑白会把颜色、高亮和图片变为灰色。",
   setTitleDesc: "在第一页顶部显示笔记名称。",
   setPageNumbersDesc: "在每页底部显示页码。",
@@ -226,8 +220,8 @@ const zhCN: Dict = {
   optIndent: "保留缩进",
   optIndentDesc: "用空格或制表符缩进的行，像编辑器中一样保持缩进。列表不受影响。",
   setIndentDesc: "用空格或制表符缩进的行，在页面上也像编辑器中一样保持缩进。列表不受影响。",
-  setReadingIndent: "在阅读视图中保留缩进",
-  setReadingIndentDesc: "用空格或制表符缩进的行，在阅读视图中也像编辑器一样缩进显示，而不是显示为代码。列表不受影响。",
+  readingMoved: "已移至 Editor-like Reading View",
+  readingMovedDesc: "阅读视图的选项（空行和缩进）现在是独立插件 Editor-like Reading View，也可在移动端使用。如需继续使用，请从社区插件中安装。",
 };
 
 const zhTW: Dict = {
@@ -268,8 +262,6 @@ const zhTW: Dict = {
   headReading: "閱讀檢視",
   headSave: "儲存",
   setBlankDesc: "筆記中的每個空行都會在頁面上留白，與編輯器中一致。程式碼區塊中的空行一律保留。",
-  setReadingBlank: "在閱讀檢視中保留空行",
-  setReadingBlankDesc: "在閱讀檢視中也像編輯器一樣，把筆記中的每個空行（包括清單項目之間的）顯示為空白。",
   setColorDesc: "黑白會把色彩、醒目標示和圖片變為灰色。",
   setTitleDesc: "在第一頁頂端顯示筆記名稱。",
   setPageNumbersDesc: "在每頁底部顯示頁碼。",
@@ -297,8 +289,8 @@ const zhTW: Dict = {
   optIndent: "保留縮排",
   optIndentDesc: "以空格或定位字元縮排的行，像編輯器中一樣保持縮排。清單不受影響。",
   setIndentDesc: "以空格或定位字元縮排的行，在頁面上也像編輯器中一樣保持縮排。清單不受影響。",
-  setReadingIndent: "在閱讀檢視中保留縮排",
-  setReadingIndentDesc: "以空格或定位字元縮排的行，在閱讀檢視中也像編輯器一樣縮排顯示，而不是顯示為程式碼。清單不受影響。",
+  readingMoved: "已移至 Editor-like Reading View",
+  readingMovedDesc: "閱讀檢視的選項（空行和縮排）現在是獨立外掛 Editor-like Reading View，也可在行動版使用。如需繼續使用，請從社群外掛中安裝。",
 };
 
 const ko: Dict = {
@@ -339,8 +331,6 @@ const ko: Dict = {
   headReading: "읽기 보기",
   headSave: "저장",
   setBlankDesc: "노트의 빈 줄을 편집기처럼 페이지의 여백으로 만듭니다. 코드 블록의 빈 줄은 항상 그대로 나옵니다.",
-  setReadingBlank: "읽기 보기에서도 빈 줄 유지",
-  setReadingBlankDesc: "읽기 보기에서도 목록 항목 사이를 포함해 노트의 빈 줄을 편집기처럼 여백으로 표시합니다.",
   setColorDesc: "흑백으로 하면 색, 하이라이트, 그림이 회색이 됩니다.",
   setTitleDesc: "첫 페이지 위에 노트 이름을 표시합니다.",
   setPageNumbersDesc: "모든 페이지 아래에 쪽 번호를 표시합니다.",
@@ -368,8 +358,8 @@ const ko: Dict = {
   optIndent: "들여쓰기 유지",
   optIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 편집기처럼 들여 씁니다. 목록은 바꾸지 않습니다.",
   setIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 페이지에서도 편집기처럼 들여 씁니다. 목록은 바꾸지 않습니다.",
-  setReadingIndent: "읽기 보기에서도 들여쓰기 유지",
-  setReadingIndentDesc: "스페이스나 탭으로 들여 쓴 줄을 읽기 보기에서도 코드가 아니라 편집기처럼 들여 써서 표시합니다. 목록은 바꾸지 않습니다.",
+  readingMoved: "Editor-like Reading View로 옮겨졌습니다",
+  readingMovedDesc: "읽기 보기 설정(빈 줄과 들여쓰기)은 모바일에서도 작동하는 별도 플러그인 Editor-like Reading View로 옮겨졌습니다. 계속 쓰려면 커뮤니티 플러그인에서 설치하세요.",
 };
 
 const es: Dict = {
@@ -410,8 +400,6 @@ const es: Dict = {
   headReading: "Vista de lectura",
   headSave: "Guardado",
   setBlankDesc: "Cada línea vacía de la nota se convierte en espacio en la página, como en el editor. Los bloques de código siempre conservan sus líneas vacías.",
-  setReadingBlank: "Conservar las líneas vacías en la vista de lectura",
-  setReadingBlankDesc: "Cada línea vacía de la nota también se muestra como espacio en la vista de lectura, también entre elementos de lista, como en el editor.",
   setColorDesc: "En blanco y negro, los colores, resaltados e imágenes pasan a gris.",
   setTitleDesc: "Muestra el nombre de la nota al principio de la primera página.",
   setPageNumbersDesc: "Muestra el número de página al pie de cada página.",
@@ -439,8 +427,8 @@ const es: Dict = {
   optIndent: "Conservar la sangría",
   optIndentDesc: "Las líneas sangradas con espacios o tabulaciones conservan su sangría, como en el editor. Las listas no cambian.",
   setIndentDesc: "Las líneas sangradas con espacios o tabulaciones conservan su sangría en la página, como en el editor. Las listas no cambian.",
-  setReadingIndent: "Conservar la sangría en la vista de lectura",
-  setReadingIndentDesc: "Las líneas sangradas con espacios o tabulaciones también se muestran sangradas en la vista de lectura, como en el editor, en lugar de como código. Las listas no cambian.",
+  readingMoved: "Trasladado a Editor-like Reading View",
+  readingMovedDesc: "Las opciones de la vista de lectura (líneas vacías y sangría) son ahora un plugin propio, Editor-like Reading View, que también funciona en móvil. Instálalo desde los plugins de la comunidad para seguir usándolas.",
 };
 
 const fr: Dict = {
@@ -481,8 +469,6 @@ const fr: Dict = {
   headReading: "Mode lecture",
   headSave: "Enregistrement",
   setBlankDesc: "Chaque ligne vide de la note devient un espace sur la page, comme dans l'éditeur. Les blocs de code gardent toujours leurs lignes vides.",
-  setReadingBlank: "Garder les lignes vides en mode lecture",
-  setReadingBlankDesc: "Chaque ligne vide de la note est aussi affichée comme un espace en mode lecture, y compris entre les éléments de liste, comme dans l'éditeur.",
   setColorDesc: "En noir et blanc, les couleurs, surlignages et images deviennent gris.",
   setTitleDesc: "Affiche le nom de la note en haut de la première page.",
   setPageNumbersDesc: "Affiche le numéro de page en bas de chaque page.",
@@ -510,8 +496,8 @@ const fr: Dict = {
   optIndent: "Garder l'indentation",
   optIndentDesc: "Les lignes indentées avec des espaces ou des tabulations restent indentées, comme dans l'éditeur. Les listes ne changent pas.",
   setIndentDesc: "Les lignes indentées avec des espaces ou des tabulations restent indentées sur la page, comme dans l'éditeur. Les listes ne changent pas.",
-  setReadingIndent: "Garder l'indentation en mode lecture",
-  setReadingIndentDesc: "Les lignes indentées avec des espaces ou des tabulations sont aussi affichées indentées en mode lecture, comme dans l'éditeur, et non comme du code. Les listes ne changent pas.",
+  readingMoved: "Déplacé vers Editor-like Reading View",
+  readingMovedDesc: "Les options du mode lecture (lignes vides et indentation) sont maintenant un plugin à part, Editor-like Reading View, qui fonctionne aussi sur mobile. Installez-le depuis les plugins de la communauté pour continuer à les utiliser.",
 };
 
 const de: Dict = {
@@ -552,8 +538,6 @@ const de: Dict = {
   headReading: "Leseansicht",
   headSave: "Speichern",
   setBlankDesc: "Jede Leerzeile der Notiz wird zu Abstand auf der Seite, wie im Editor. Codeblöcke behalten ihre Leerzeilen immer.",
-  setReadingBlank: "Leerzeilen in der Leseansicht behalten",
-  setReadingBlankDesc: "Jede Leerzeile der Notiz wird auch in der Leseansicht als Abstand gezeigt, auch zwischen Listeneinträgen, wie im Editor.",
   setColorDesc: "Schwarzweiß macht Farben, Hervorhebungen und Bilder grau.",
   setTitleDesc: "Zeigt den Notiznamen oben auf der ersten Seite.",
   setPageNumbersDesc: "Zeigt die Seitenzahl unten auf jeder Seite.",
@@ -581,8 +565,8 @@ const de: Dict = {
   optIndent: "Einrückung behalten",
   optIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen bleiben eingerückt, wie im Editor. Listen werden nicht verändert.",
   setIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen bleiben auch auf der Seite eingerückt, wie im Editor. Listen werden nicht verändert.",
-  setReadingIndent: "Einrückung in der Leseansicht behalten",
-  setReadingIndentDesc: "Mit Leerzeichen oder Tabs eingerückte Zeilen werden auch in der Leseansicht eingerückt gezeigt, wie im Editor, statt als Code. Listen werden nicht verändert.",
+  readingMoved: "Verschoben nach Editor-like Reading View",
+  readingMovedDesc: "Die Optionen der Leseansicht (Leerzeilen und Einrückung) sind jetzt ein eigenes Plugin, Editor-like Reading View, das auch auf Mobilgeräten läuft. Installiere es aus den Community-Plugins, um sie weiter zu nutzen.",
 };
 
 const DICTS: Record<LangCode, Dict> = { en, ja, "zh-CN": zhCN, "zh-TW": zhTW, ko, es, fr, de };

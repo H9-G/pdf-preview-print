@@ -1,13 +1,11 @@
-import { MarkdownView, Notice, Plugin, TFile, debounce, getLanguage } from "obsidian";
+import { MarkdownView, Notice, Plugin, TFile, getLanguage } from "obsidian";
 import { MessageKey, detectLanguage, tr } from "./i18n";
 import { ExportModal } from "./modal";
-import { ReadingBlankLines } from "./reading";
 import { PdfSettings, sanitizeSettings } from "./settings";
 import { PdfSettingTab } from "./settingsTab";
 
 export default class PdfPreviewPrintPlugin extends Plugin {
   settings!: PdfSettings;
-  private reading!: ReadingBlankLines;
 
   t(key: MessageKey, vars?: Record<string, string | number>): string {
     return tr(this.settings.language || "en", key, vars);
@@ -21,12 +19,6 @@ export default class PdfPreviewPrintPlugin extends Plugin {
       await this.saveSettings();
     }
 
-    this.reading = new ReadingBlankLines(this.app, () => this.settings.readingBlankLines, () => this.settings.readingIndent);
-    this.registerMarkdownPostProcessor((el, ctx) => this.reading.process(el, ctx));
-    const refresh = debounce(() => this.reading.refresh(), 300, true);
-    this.registerEvent(this.app.workspace.on("editor-change", refresh));
-    this.registerEvent(this.app.workspace.on("layout-change", refresh));
-    this.registerEvent(this.app.vault.on("modify", refresh));
 
     this.addCommand({
       id: "export",
@@ -55,27 +47,12 @@ export default class PdfPreviewPrintPlugin extends Plugin {
     this.addSettingTab(new PdfSettingTab(this.app, this));
   }
 
-  onunload(): void {
-    this.reading.clear();
-  }
-
   openExport(file: TFile | null): void {
     if (!file) {
       new Notice(this.t("noFile"));
       return;
     }
     new ExportModal(this, file).open();
-  }
-
-  refreshReading(): void {
-    this.reading.refresh();
-  }
-
-  /** Render every open reading view again (indentation changes the blocks themselves). */
-  rerenderReading(): void {
-    for (const leaf of this.app.workspace.getLeavesOfType("markdown")) {
-      if (leaf.view instanceof MarkdownView) leaf.view.previewMode.rerender(true);
-    }
   }
 
   async saveSettings(): Promise<void> {

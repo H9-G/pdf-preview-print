@@ -24,7 +24,7 @@ export interface ExportOptions {
   keepBlankLines: boolean;
   /** Keep the spaces and tabs at the start of lines (outside lists). */
   keepIndent: boolean;
-  /** Empty lines between and inside list items (also used in reading view). */
+  /** Empty lines between and inside list items. */
   blankInLists: boolean;
   /** Empty lines inside math blocks: the block is split into separate formulas there. */
   blankInMath: boolean;
@@ -43,10 +43,6 @@ export interface ExportOptions {
 export interface PdfSettings extends ExportOptions {
   /** Empty until first run, when it is taken from Obsidian's language. */
   language: LangCode | "";
-  /** Show every empty line in reading view as well. */
-  readingBlankLines: boolean;
-  /** Keep indentation in reading view as well. */
-  readingIndent: boolean;
   saveTo: SaveTo;
   openAfterSave: boolean;
   /** Folder last chosen in the save dialog. */
@@ -59,8 +55,6 @@ export const DEFAULT_SETTINGS: PdfSettings = {
   keepIndent: true,
   blankInLists: true,
   blankInMath: true,
-  readingBlankLines: true,
-  readingIndent: true,
   colorMode: "color",
   pageSize: "A4",
   landscape: false,
@@ -87,8 +81,6 @@ export function sanitizeSettings(raw: unknown): PdfSettings {
     keepIndent: bool("keepIndent"),
     blankInLists: bool("blankInLists"),
     blankInMath: bool("blankInMath"),
-    readingBlankLines: bool("readingBlankLines"),
-    readingIndent: bool("readingIndent"),
     colorMode: r.colorMode === "gray" || r.colorMode === "color" ? r.colorMode : d.colorMode,
     pageSize: has(PAGE_SIZES, r.pageSize) ? (r.pageSize as PageSizeKey) : d.pageSize,
     landscape: bool("landscape"),

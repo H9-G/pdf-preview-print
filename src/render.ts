@@ -2,7 +2,6 @@ import { App, Component, MarkdownRenderer, MarkdownView, TFile } from "obsidian"
 import { keepIndent } from "./indent";
 import { GAP_BEFORE_CLASS, GAP_CLASS, LINES_VAR, keepBlankLines, stripFrontmatter } from "./blank";
 import { PAGE_CLASS, GRAY_CLASS } from "./page";
-import { READING_CLASS } from "./reading";
 
 /** The note as HTML, ready to be put into the print page. */
 export interface RenderedNote {
@@ -81,9 +80,9 @@ export async function renderNote(app: App, file: TFile, opts: RenderOptions): Pr
     // Links to other notes lead nowhere in a PDF.
     for (const a of Array.from(view.querySelectorAll("a.internal-link"))) a.removeAttribute("href");
     for (const img of Array.from(view.querySelectorAll("img"))) img.removeAttribute("loading");
-    // The reading-view spacing is done differently in the PDF.
-    for (const el of Array.from(view.querySelectorAll<HTMLElement>(`.${READING_CLASS}, .${GAP_BEFORE_CLASS}`))) {
-      el.removeClasses([READING_CLASS, GAP_BEFORE_CLASS]);
+    // Spacing that another plugin (such as Editor-like Reading View) added for reading view is done differently here.
+    for (const el of Array.from(view.querySelectorAll<HTMLElement>(`.${GAP_BEFORE_CLASS}, .elrv-blank-before, .elrv-gap-before`))) {
+      el.removeClasses([GAP_BEFORE_CLASS, "elrv-blank-before", "elrv-gap-before"]);
       el.setCssProps({ [LINES_VAR]: "" });
     }
     // Space between list items: the marker tells how many lines; the space goes on its paragraph or list item.

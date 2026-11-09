@@ -12,8 +12,8 @@ Preview a note as PDF pages before you save it, and print it. Choose the paper, 
 - **Options**: paper size (A3, A4, A5, B4, B5, Letter, Legal), portrait or landscape, margins, text size, note name as title, page numbers, line numbers (off by default).
 - **Colour or black and white**: black and white turns colours, highlights and pictures into grey. When printing, the printer is also set to grey.
 - **Keep empty lines**: Markdown usually shows several empty lines as one gap. With this option every empty line becomes space on the page, as in the editor. It can be turned on or off in the export window and in the settings (on by default). Lists and math blocks can be included or left out (both included by default); a math block is split into separate formulas at its empty lines. Code blocks always keep their empty lines.
-- **Empty lines in reading view**: reading view shows every empty line as space too, also between list items (can be turned off in the settings).
-- **Keep indentation**: lines indented with spaces or tabs stay indented in the PDF and in reading view, as in the editor, instead of becoming code. Lists are not changed. Both can be turned off in the settings.
+- **Reading view**: the options that show empty lines and indentation in reading view are now a plugin of their own, [Editor-like Reading View](https://github.com/H9-G/editor-like-reading-view), which also works on mobile.
+- **Keep indentation**: lines indented with spaces or tabs stay indented in the PDF, as in the editor, instead of becoming code. Lists are not changed. Can be turned off in the settings and in the export window.
 - The settings, commands and messages are available in English, Japanese, Simplified Chinese, Traditional Chinese, Korean, Spanish, French and German. The language follows Obsidian on first use and can be changed in the settings.
 
 ## How to use

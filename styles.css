@@ -1,12 +1,4 @@
-/* Extra empty lines in reading view: one line of space for each empty line after the first. */
-.markdown-preview-view .pdf-preview-print-blank-before::before {
-  content: "";
-  display: block;
-  height: calc(var(--pdf-preview-print-blank-lines, 0) * var(--line-height-normal, 1.5) * 1em);
-  margin-top: calc(-1 * var(--p-spacing, 1rem));
-}
-
-/* Extra empty lines between list items (reading view and PDF). */
+/* Extra empty lines between list items in the PDF. */
 .markdown-rendered .pdf-preview-print-gap-before {
   padding-top: calc(var(--pdf-preview-print-blank-lines, 0) * var(--line-height-normal, 1.5) * 1em);
 }

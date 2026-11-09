@@ -12,8 +12,8 @@ Previsualiza una nota como páginas PDF antes de guardarla, e imprímela. Elige 
 - **Opciones**: tamaño del papel (A3, A4, A5, B4, B5, Letter, Legal), vertical u horizontal, márgenes, tamaño del texto, nombre de la nota como título, números de página, números de línea (desactivados por defecto).
 - **Color o blanco y negro**: en blanco y negro, los colores, resaltados e imágenes pasan a gris. Al imprimir, la impresora también se ajusta a gris.
 - **Conservar las líneas vacías**: Markdown suele mostrar varias líneas vacías como un solo espacio. Con esta opción, cada línea vacía se convierte en espacio en la página, como en el editor. Se puede activar o desactivar en la ventana de exportación y en los ajustes (activada por defecto). Se puede elegir si incluir listas y bloques de matemáticas (ambos incluidos por defecto); un bloque de matemáticas se divide en fórmulas separadas en sus líneas vacías. Los bloques de código siempre conservan sus líneas vacías.
-- **Líneas vacías en la vista de lectura**: la vista de lectura también muestra cada línea vacía como espacio, también entre elementos de lista (se puede desactivar en los ajustes).
-- **Conservar la sangría**: las líneas sangradas con espacios o tabulaciones mantienen la sangría en el PDF y en la vista de lectura, como en el editor, en lugar de convertirse en código. Las listas no cambian. Ambas opciones se pueden desactivar en los ajustes.
+- **Vista de lectura**: las opciones que muestran las líneas vacías y la sangría en la vista de lectura son ahora un plugin propio, [Editor-like Reading View](https://github.com/H9-G/editor-like-reading-view), que también funciona en móvil.
+- **Conservar la sangría**: las líneas sangradas con espacios o tabulaciones mantienen la sangría en el PDF, como en el editor, en lugar de convertirse en código. Las listas no cambian. Se puede desactivar en los ajustes y en la ventana de exportación.
 - Los ajustes, comandos y mensajes están disponibles en inglés, japonés, chino simplificado, chino tradicional, coreano, español, francés y alemán. El idioma sigue al de Obsidian la primera vez y se puede cambiar en los ajustes.
 
 ## Cómo se usa
